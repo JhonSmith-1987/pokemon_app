@@ -1,0 +1,105 @@
+<div class="pokedex">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" (click)="returnHome()">
+        <img class="title" src="/assets/img/title1.png"/>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active listar_pokemon" aria-current="page" (click)="showTable()">Lista Pokemon</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input (input)="handleChange($event)" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="content">
+    <div class="img_top">
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+    </div>
+    <div class="img_left">
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+    </div>
+    <div class="info">
+      <ng-container *ngIf="imagen_fondo">
+        <div class="video">
+          <img src="/assets/img/img_contenido.jpg"/>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="table_list">
+        <app-table (pokemonSelected)="handlePokemonSelected($event)" [pokemones]="table_pokemones"></app-table>
+      </ng-container>
+      <ng-container *ngIf="card">
+        <div class="card">
+          <div class="content_card">
+            <div class="card-body">
+              <h2 class="card-title">{{selected_pokemon?.name}}</h2>
+              <p class="card-text">
+                Aqui se escribe la mierda del pokemon.
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><span class="span_li"> Peso: </span>{{selected_pokemon?.weight}} gramos</li>
+              <li class="list-group-item"><span class="span_li">Altura: </span>{{selected_pokemon?.height}} cm</li>
+              <li class="list-group-item"><span class="span_li">Experiencia: </span>{{selected_pokemon?.base_experience}}</li>
+            </ul>
+            <div class="card-body">
+              <a (click)="showTable()" class="card-link">Volver lista</a>
+              <a (click)="returnHome()" class="card-link">Volver inicio</a>
+            </div>
+          </div>
+          <img src="{{selected_pokemon?.sprites?.front_default}}" class="card-img-top" alt="...">
+        </div>
+      </ng-container>
+    </div>
+    <div class="img_right">
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+    </div>
+    <div class="img_bottom">
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+      <img class="img_side" src="/assets/img/img_side.jpg"/>
+    </div>
+  </div>
+
+
+  <footer class="bg-light">
+    <div class="name">
+      <span>JohnSmith</span>
+    </div>
+    <div class="network">
+      <a href="https://www.facebook.com/profile.php?id=100040344107693">
+        <img src="/assets/img/facebook.png"/>
+      </a>
+      <a href="https://www.instagram.com/johnsmithvariedades/">
+        <img src="/assets/img/instagram.png"/>
+      </a>
+      <a>
+        <img src="/assets/img/email.png"/>
+      </a>
+    </div>
+  </footer>
+
+
+</div>
