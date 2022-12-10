@@ -19,5 +19,5 @@ export class LoginComponent implements OnInit {
   checkIn() {
     this.log_in = false;
     this.check_in = true;
-
+  }
 }
