@@ -1,0 +1,42 @@
+<ng-container *ngIf="log_in">
+  <div class="content_form">
+    <div class="img_form">
+      <img class="img_form_title" src="/assets/img/img_contenido.jpg"/>
+      <img class="img_form_pikachu" src="/assets/img/pikachu2.png"/>
+    </div>
+    <form class="form_pokemon">
+      <input type="text" id="password_user" placeholder="Ingresa tu correo">
+      <input type="password" id="password_in" placeholder="Ingresa tu contraseña">
+      <button>Ingresar</button>
+    </form>
+    <div class="img_end">
+      <img src="/assets/img/img_side.jpg"/>
+    </div>
+    <div class="messages">
+      <h4>{{messages}}</h4>
+    </div>
+    <p>No te has registrado? <a (click)="checkIn()" class="checkin">registrarte aqui</a></p>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="check_in">
+  <div class="content_form">
+    <div class="img_form">
+      <img class="img_form_title" src="/assets/img/img_contenido.jpg"/>
+      <img class="img_form_pikachu" src="/assets/img/pikachu2.png"/>
+    </div>
+    <form class="form_pokemon">
+      <input type="text" id="name" placeholder="Escribe tu nombre">
+      <input type="text" id="email" placeholder="Escribe tu correo">
+      <input type="password" id="password" placeholder="Escribe tu contraseña">
+      <input type="password" placeholder="Repite tu contraseña">
+      <button>Registrar</button>
+    </form>
+    <div class="img_end">
+      <img src="/assets/img/img_side.jpg"/>
+    </div>
+    <div class="messages">
+      <h4>{{messages}}</h4>
+    </div>
+  </div>
+</ng-container>

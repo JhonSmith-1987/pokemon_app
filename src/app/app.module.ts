@@ -9,12 +9,14 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ContentComponent } from './COMPONENTS/content/content.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './COMPONENTS/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    ContentComponent
+    ContentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
