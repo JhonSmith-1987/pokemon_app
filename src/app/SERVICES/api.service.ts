@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 import {ApiPokemon} from '../MODELS/ApiPokemon';
 import {Pokemon} from "../MODELS/Pokemon";
@@ -9,7 +9,7 @@ import {Pokemon} from "../MODELS/Pokemon";
 })
 export class ApiService {
 
-  url:string = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
+  url:string = "https://pokeapi.co/api/v2/pokemon?limit=1000002111111111111111111111111111111111111111111111111111111111111&offset=0";
 
   constructor(
     private http:HttpClient

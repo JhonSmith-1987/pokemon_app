@@ -8,8 +8,9 @@ import { TableComponent } from './COMPONENTS/table/table.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ContentComponent } from './COMPONENTS/content/content.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './COMPONENTS/login/login.component';
+import {ApiUsersService} from "./SERVICES/apiUsers/api-users.service";
 
 @NgModule({
   declarations: [
@@ -23,10 +24,12 @@ import { LoginComponent } from './COMPONENTS/login/login.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiService,
+    ApiUsersService
   ],
   bootstrap: [AppComponent]
 })
