@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="check_in">
   <div class="content_form">
     <div class="img_form">
       <img class="img_form_title" src="/assets/img/img_contenido.jpg"/>
@@ -6,7 +6,6 @@
     </div>
     <form class="form_pokemon" (ngSubmit)="handleForm(form_pokemon)" #form_pokemon="ngForm">
       <input
-        *ngIf="show_input_name"
         type="text"
         id="name"
         placeholder="Escribe tu nombre"
@@ -17,21 +16,20 @@
       <input
         type="email"
         id="email"
-        placeholder="{{placeholder_name}}"
+        placeholder="Escribe tu correo"
         ngModel
         name="email"
-        required
+        email
       >
       <input
         type="password"
         id="password"
-        placeholder="{{placeholder_password}}"
+        placeholder="Escribe tu contraseña"
         ngModel
         name="password"
         required
       >
       <input
-        *ngIf="show_input_pass"
         type="password"
         placeholder="Repite tu contraseña"
         ngModel
@@ -39,20 +37,52 @@
         required
       >
       <button
-        *ngIf="log_in"
-        type="submit"
-      >Entrar</button>
-      <button
-        *ngIf="check_in"
         type="submit"
       >Registrar</button>
     </form>
-    <div class="messages">
-      <h4>{{messages}}</h4>
-    </div>
     <div class="img_end">
       <img src="/assets/img/img_side.jpg"/>
     </div>
-    <p *ngIf="show_message">No te has registrado? <a (click)="checkIn()" class="checkin">registrarte aqui</a></p>
+    <div class="messages">
+      <h4>{{messages}}</h4>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="log_in">
+  <div class="content_form">
+    <div class="img_form">
+      <img class="img_form_title" src="/assets/img/img_contenido.jpg"/>
+      <img class="img_form_pikachu" src="/assets/img/pikachu2.png"/>
+    </div>
+    <form class="form_pokemon" (ngSubmit)="handleForm(form_pokemon)" #form_pokemon="ngForm">
+      <input
+        type="email"
+        id="login_email"
+        placeholder="Ingresa tu correo electronico"
+        ngModel
+        name="login_email"
+        email
+      >
+      <input
+        type="password"
+        id="login_password"
+        placeholder="Ingresa tu contraseña"
+        ngModel
+        name="login_password"
+        required
+      >
+      <button
+        *ngIf="log_in"
+        type="submit"
+      >Entrar</button>
+    </form>
+    <div class="img_end">
+      <img src="/assets/img/img_side.jpg"/>
+    </div>
+    <div class="messages">
+      <h4>{{messages}}</h4>
+    </div>
+    <p>No te has registrado? <a (click)="checkIn()" class="checkin">registrarte aqui</a></p>
   </div>
 </ng-container>

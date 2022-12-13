@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DTOCheckinUserPokemon} from "../../MODELS/DTOCheckinUserPokemon";
 
 @Injectable({
@@ -7,12 +7,20 @@ import {DTOCheckinUserPokemon} from "../../MODELS/DTOCheckinUserPokemon";
 })
 export class ApiUsersService {
 
-  url:string = "localhost:3000/"
-  user_pokemon: DTOCheckinUserPokemon | undefined;
+  url:string = "/api/users";
 
   constructor(private http:HttpClient) { }
 
-  async postUserPokemon(){
-    return await this.http.post(this.url+'users', this.user_pokemon).toPromise()
+  async postUserPokemon(checkin_pokemon:DTOCheckinUserPokemon){
+    const headers = new HttpHeaders({
+      "Content-Type" : "application/json",
+    })
+    try{
+      let data = await this.http.post(this.url, checkin_pokemon,{headers:headers}).toPromise();
+      console.log(data);
+    }catch (e) {
+      console.log(e);
+    }
+    return null;
   }
 }

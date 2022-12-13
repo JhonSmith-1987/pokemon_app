@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validator, Validators} from "@angular/forms";
+import {ApiUsersService} from "../../SERVICES/apiUsers/api-users.service";
+import {DTOCheckinUserPokemon} from "../../MODELS/DTOCheckinUserPokemon";
+import {HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -8,28 +11,20 @@ import {FormControl, FormGroup, NgForm, Validator, Validators} from "@angular/fo
 })
 export class LoginComponent implements OnInit {
 
-  show_input_name:boolean = false;
-  show_input_pass:boolean = false;
   log_in:boolean = true;
   check_in:boolean = false;
-  show_message:boolean = true;
-  placeholder_name:string = 'Ingresa tu correo';
-  placeholder_password:string = 'Ingresa tu contraseña';
   messages:string = '';
 
-  constructor() { }
+  constructor( private apiUsersPokemon:ApiUsersService ) {  }
 
   ngOnInit(): void {
   }
 
+
+
   checkIn() {
-    this.show_input_name = true;
-    this.placeholder_name = 'Escribe tu correo'
-    this.show_input_pass = true;
-    this.placeholder_password = 'Escribe tu contraseña'
     this.log_in = false;
     this.check_in = true;
-    this.show_message = false;
   }
 
   handleForm(form:any){
@@ -38,8 +33,14 @@ export class LoginComponent implements OnInit {
       this.messages = 'Contraseña no son iguales, verifica'
     }else{
       this.messages = ''
-      console.log('estos son los datos del formulario');
-      console.log(form_pokemon);
+      let checkin_pokemon:DTOCheckinUserPokemon = {
+        'Name' : form_pokemon.name,
+        'Email' : form_pokemon.email.toString(),
+        'Password' : form_pokemon.password
+      }
+      this.apiUsersPokemon.postUserPokemon(checkin_pokemon);
+      console.log('se guardo correctamente el usuario');
+      console.log(checkin_pokemon);
     }
   }
 }
