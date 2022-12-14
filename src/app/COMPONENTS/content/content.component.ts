@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Pokemon} from "../../MODELS/Pokemon";
 import {ApiService} from "../../SERVICES/api.service";
 import {ApiPokemon, ResultPokemon} from "../../MODELS/ApiPokemon";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-content',
@@ -17,18 +18,25 @@ export class ContentComponent implements OnInit {
   pokemon: any;
   pokemones?:ResultPokemon[];
   table_pokemones?:ResultPokemon[];
+  name_user:string | null = "";
 
 
-  constructor(private api:ApiService) {
+  constructor(private api:ApiService,
+              private router:Router) {
 
   }
 
   ngOnInit(): void {
+    let is_logged = sessionStorage.getItem("is_logged");
+    if ( is_logged == null){
+      this.router.navigate(["/login"]);
+    }
     this.api.getAllPokemonName().then((result) => {
       this.pokemones = result?.results;
       this.table_pokemones = this.pokemones;
       console.log(this.pokemones);
     });
+    this.name_user = sessionStorage.getItem("name_user");
   }
 
   showTable() {
@@ -68,5 +76,10 @@ export class ContentComponent implements OnInit {
     let result_pokemones = this.pokemones?.filter((pokemon)=>pokemon.name.includes(busqueda));
     console.log(result_pokemones);
     return result_pokemones;
+  }
+
+  logout(){
+    sessionStorage.clear();
+    this.router.navigate(["/login"]);
   }
 }
